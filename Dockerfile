@@ -5,7 +5,7 @@ ENV JULIA_DEPOT_PATH=/opt/myjulia
 RUN  yum -y  install  dnf-plugins-core \
                       bc make cmake binutils git wget diffutils file sed gawk grep which autoconf automake libtool \
                       gcc-gfortran gcc-c++ clang bzip2   openssl-devel openssl \
-                       python gcc-c++ gcc-gfortran \
+                       python gcc-c++ gcc-gfortran     \
 julia  -e 'import Pkg;                                 \
 Pkg.add("SpecialFunctions");                           \
 Pkg.add(url="https://github.com/bat/BAT.jl.git");      \
