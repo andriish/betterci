@@ -3,6 +3,7 @@ on: [push]
 jobs:
   publish-hello-docker-image:
     runs-on: ubuntu-latest
+    name: on_me
     steps:
     - uses: actions/checkout@v2
     - name: Login to GitHub Container Registry
