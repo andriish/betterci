@@ -1,9 +1,13 @@
 name: publish
 on: [push]
 jobs:
-  publish-hello-docker-image:
+  build-partondensity-docker-image:
     runs-on: ubuntu-latest
     name: on_me
+    on:
+      push:
+        paths:
+          - Dockerfile
     steps:
     - uses: actions/checkout@v2
     - name: Login to GitHub Container Registry
@@ -12,33 +16,22 @@ jobs:
         registry: ghcr.io
         username: ${{ github.actor }}
         password: ${{ secrets.GITHUB_TOKEN }}
-    - name: Build the hello-docker Docker image
+    - name: Build the PartonDensity Docker image
       run: |
          docker build . --tag ghcr.io/andriish/betterci:latest
          docker run ghcr.io/andriish/betterci:latest
          docker push ghcr.io/andriish/betterci
 
-  run-in-hello-docker-image:
+  run-in-partondensity-docker-image:
     runs-on: ubuntu-latest
     container:
             image: ghcr.io/andriish/betterci:latest
             credentials:
                username: ${{ github.actor }}
                password: ${{ secrets.GITHUB_TOKEN }}
-#               password: ${{  secrets.DOCKER_CONTAINER_REGISTRY_TOKEN }}    
     steps:
     - name: Checkout
       uses: actions/checkout@v2
     - name: Run
       run : |
          g++ main.cc -o main.exe
-
-
-
-#    - name: Compile
-#      id: compileindocker
-#      uses: ./.github/workflows/mydocker
-#    - name: Get the output status
-#      run: exit ${{ steps.compileindocker.outputs.out }}
-
-   
