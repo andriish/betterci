@@ -3,13 +3,18 @@ on: [push]
 jobs:
   build-partondensity-docker-image:
     runs-on: ubuntu-latest
-    name: on_me
-    on:
-      push:
-        paths:
-          - Dockerfile
+    name: Build PartonDensity Docker image
     steps:
-    - uses: actions/checkout@v2
+    - uses: actions/checkout@v3
+        with:
+          fetch-depth: 2 
+    - name: Check if the Docker file was changed
+        id: changed-docker-files
+        uses: tj-actions/changed-files@v38
+        with:
+          files_my: |
+            container:
+              - Dockerfile
     - name: Login to GitHub Container Registry
       uses: docker/login-action@v2
       with:
@@ -17,6 +22,7 @@ jobs:
         username: ${{ github.actor }}
         password: ${{ secrets.GITHUB_TOKEN }}
     - name: Build the PartonDensity Docker image
+      if: steps.changed-docker-files.outputs.container_any_changed == 'true'  
       run: |
          docker build . --tag ghcr.io/andriish/betterci:latest
          docker run ghcr.io/andriish/betterci:latest
