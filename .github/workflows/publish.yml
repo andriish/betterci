@@ -1,7 +1,7 @@
 name: publish
 on: 
-  - push:
-  - schedule:
+  push:
+  schedule:
     - cron: "* * * * 2"
 jobs:
   build-partondensity-docker-image:
