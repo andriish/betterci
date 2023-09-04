@@ -7,10 +7,10 @@ RUN  yum -y  install  dnf-plugins-core \
                       gcc-gfortran gcc-c++ clang bzip2   openssl-devel openssl \
                        python gcc-c++ gcc-gfortran \
                        
-julia  -e 'import Pkg;                                           \
-Pkg.add("SpecialFunctions");                                           \
-Pkg.add(url="https://github.com/bat/BAT.jl.git");                      \
-Pkg.add("Colors");                                                     \
+julia  -e 'import Pkg;                                 \
+Pkg.add("SpecialFunctions");                           \
+Pkg.add(url="https://github.com/bat/BAT.jl.git");      \
+Pkg.add("Colors");                                     \
 Pkg.add("Plots"); \
 Pkg.add("HDF5"); \
 Pkg.add("PackageCompiler"); \
