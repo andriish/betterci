@@ -10,9 +10,9 @@ jobs:
       with:
           fetch-depth: 2 
     - name: Check if the Docker file was changed
-        id: changed-docker-files
-        uses: tj-actions/changed-files@v38
-        with:
+      id: changed-docker-files
+      uses: tj-actions/changed-files@v38
+      with:
           files_my: |
             container:
               - Dockerfile
