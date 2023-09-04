@@ -10,7 +10,7 @@ julia  -e 'import Pkg;                                 \
 Pkg.add("SpecialFunctions");                           \
 Pkg.add(url="https://github.com/bat/BAT.jl.git");      \
 Pkg.add("Colors");                                     \
-Pkg.add("Plots"); \
+Pkg.add("Plots");                                      \
 Pkg.add("HDF5"); \
 Pkg.add("PackageCompiler"); \
 Pkg.add("ArgParse"); \

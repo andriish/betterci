@@ -13,9 +13,7 @@ jobs:
       id: changed-docker-files
       uses: tj-actions/changed-files@v38
       with:
-          files: |
-            container:
-              - Dockerfile
+          files: Dockerfile
 
     - name: Login to GitHub Container Registry
       uses: docker/login-action@v2
@@ -24,7 +22,7 @@ jobs:
         username: ${{ github.actor }}
         password: ${{ secrets.GITHUB_TOKEN }}
     - name: Build the PartonDensity Docker image
-      if: steps.changed-docker-files.outputs.container_any_changed == 'true'  
+      if: steps.changed-docker-files.outputs.any_changed == 'true'  
       run: |
          docker build . --tag ghcr.io/andriish/betterci:latest
          docker run ghcr.io/andriish/betterci:latest
