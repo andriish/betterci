@@ -6,7 +6,7 @@ RUN  yum -y  install  dnf-plugins-core \
                       bc make cmake binutils git wget diffutils file sed gawk grep which autoconf automake libtool \
                       gcc-gfortran gcc-c++ clang bzip2   openssl-devel openssl \
                        python gcc-c++ gcc-gfortran     \
-julia  -e \'import Pkg;                                 \
+julia  -e 'import Pkg;                                 \
 Pkg.add("SpecialFunctions");                           \
 Pkg.add(url="https://github.com/bat/BAT.jl.git");      \
 Pkg.add("Colors");                                     \
@@ -31,8 +31,7 @@ Pkg.add("LaTeXStrings"); \
 Pkg.add("HypothesisTests"); \
 Pkg.add("Statistics"); \
 Pkg.add("Measures"); \
-Pkg.add("ArgParse");
-\' \
+Pkg.add("ArgParse");' \
 && yum -y clean all
 
 
