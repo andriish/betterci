@@ -5,8 +5,9 @@ jobs:
     runs-on: ubuntu-latest
     name: Build PartonDensity Docker image
     steps:
-    - uses: actions/checkout@v3
-        with:
+    - name: Checkout
+      uses: actions/checkout@v3
+      with:
           fetch-depth: 2 
     - name: Check if the Docker file was changed
         id: changed-docker-files
