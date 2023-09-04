@@ -20,9 +20,19 @@ jobs:
 
   run-in-hello-docker-image:
     runs-on: ubuntu-latest
+    container:
+            image: ghcr.io/andriish/betterci:latest
+            credentials:
+               username: ${{ github.actor }}
+               password: ${{ secrets.GITHUB_TOKEN }}
+#               password: ${{  secrets.DOCKER_CONTAINER_REGISTRY_TOKEN }}    
     steps:
     - name: Checkout
       uses: actions/checkout@v2
+    - name: Run
+      run : |
+         g++ main.cc -o main.exe
+
 #    - name: Compile
 #      id: compileindocker
 #      uses: ./.github/workflows/mydocker
