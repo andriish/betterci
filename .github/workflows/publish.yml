@@ -17,3 +17,16 @@ jobs:
          docker build . --tag ghcr.io/andriish/betterci:latest
          docker run ghcr.io/andriish/betterci:latest
          docker push ghcr.io/andriish/betterci
+
+  run-in-hello-docker-image:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v2
+#    - name: Compile
+#      id: compileindocker
+#      uses: ./.github/workflows/mydocker
+#    - name: Get the output status
+#      run: exit ${{ steps.compileindocker.outputs.out }}
+
+   
